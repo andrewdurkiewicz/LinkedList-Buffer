@@ -10,39 +10,46 @@ typedef struct Node{
 	Node* next;
 };
 
-Node* initNode(string first, string last);
-void setNext(Node* thisPtr, Node* nextPtr);
-
 int main()
 {
 	string text = "";
 	ifstream openfile("Name.txt");
-	Node* tempPtr;
-	Node* head;
+	Node* head = new Node();
+	string nameValue;
+
 	int count = 0;
 	if (openfile.is_open())
 	{
 		while(!openfile.eof())
 		{
-
-			string nameValue;
-			openfile >> nameValue;
-			string firstName = nameValue;
-			openfile >> nameValue;
-			string lastName = nameValue;
-			tempPtr->next = newPtr;
-			Node* newPtr = initNode(firstName, lastName);
-			tempPtr = newPtr;
+			Node* tmpPtr = new Node();
 
 			if (count == 0)
 			{
-				head = newPtr;
-				
+				tmpPtr = head;
+				openfile >> nameValue;
+				string firstName = nameValue;
+				openfile >> nameValue;
+				string lastName = nameValue;
+				head->firstName = firstName;
+				head->lastName = lastName;
 			}
-			tempPtr = newPtr;
-			count++;
-			system("pause");
 
+			else
+			{
+				Node* newNode = new Node();
+				*tmpPtr->next = newNode;
+				tmpPtr = newNode;
+				openfile >> nameValue;
+				string firstName = nameValue;
+				openfile >> nameValue;
+				string lastName = nameValue;
+				newNode->firstName = firstName;
+				newNode->lastName = lastName;
+
+			}
+			count++;
+			
 		}
 
 	}
