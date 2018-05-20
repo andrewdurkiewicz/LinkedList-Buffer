@@ -1,3 +1,3 @@
 ﻿  LinkedList-Buffer.cpp
-c:\users\andre\documents\github\linkedlist-buffer\linkedlist-buffer\linkedlist-buffer\linkedlist-buffer.cpp(11): warning C4091: 'typedef ': ignored on left of 'Node' when no variable is declared
+c:\users\andre\documents\github\linkedlist-buffer\linkedlist-buffer\linkedlist-buffer\linkedlist-buffer.cpp(12): warning C4091: 'typedef ': ignored on left of 'Node' when no variable is declared
   LinkedList-Buffer.vcxproj -> C:\Users\andre\Documents\GitHub\LinkedList-Buffer\LinkedList-Buffer\Debug\LinkedList-Buffer.exe

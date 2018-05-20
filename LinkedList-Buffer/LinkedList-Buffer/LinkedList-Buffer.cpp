@@ -3,12 +3,14 @@
 #include <string>
 using namespace std;
 
-typedef struct Node{
+typedef struct Node
+{
 	string firstName;
 	string lastName;
-	double gpa;
+	double avg;
 	Node* next;
 };
+
 Node* tmpPtr;
 Node* head;
 Node* getNext(Node* ptr);
@@ -17,10 +19,15 @@ int main()
 {
 	string text = "";
 	ifstream openfile("Name.txt");
-
 	string nameValue;
-
 	int count = 0;
+
+	if (openfile.fail()) 
+	{
+		cout << "Error opening file, Name.txt does not exist!" << endl;
+		exit(1);
+	}
+
 	if (openfile.is_open())
 	{
 		while(!openfile.eof())
@@ -54,32 +61,35 @@ int main()
 			count++;
 			
 		}
+		openfile.close(); //close the file
+	}
 
-	}
-	else
+	tmpPtr = head; 
+	while (getNext(tmpPtr) != NULL)
 	{
+		double enteravg;
+		cout << "Please enter the final average for: ";
+		cout << tmpPtr->firstName << " " << tmpPtr->lastName << endl << flush;
+		cin >> enteravg;
+		tmpPtr->avg = enteravg;
+		tmpPtr = tmpPtr->next;
 	}
-	Node* tmp = head;
-	while (getNext(tmp) != NULL)
+
+	ofstream myfile;
+	myfile.open("Output.txt");
+	tmpPtr = head;
+	while (getNext(tmpPtr) != NULL) //iterate over the linked list
 	{
-		double enterGPA;
-		cout << "Please enter the GPA for: ";
-		cout << tmp->firstName << " " << tmp->lastName << endl << flush;
-		cin >> enterGPA;
-		tmp->gpa = enterGPA;
-		tmp = tmp->next;
+		myfile << tmpPtr->firstName << " " << tmpPtr->lastName << " " << tmpPtr->avg << endl << flush;
+		tmpPtr = tmpPtr->next;
 	}
-	tmp = head;
-	while (getNext(tmp) != NULL)
-	{
-		cout << tmp->firstName << " " << tmp->lastName << " has a GPA of: " << tmp->gpa << endl << flush;
-		tmp = tmp->next;
-	}
-	
-	system("pause");
+	myfile.close();
+
 	return 0;
 }
-Node* getNext(Node* ptr) {
+
+Node* getNext(Node* ptr) 
+{
 	return ptr->next;
 }
 
