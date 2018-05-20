@@ -1,5 +1,5 @@
-Person One 22
-Person Two 55
-Person Three 54.4
-Person Four 42.5
-Person Five 43
+Person One 4.4
+Person Two 2.2
+Person Three 4.5
+Person Four 2.3
+Person Five 5.5

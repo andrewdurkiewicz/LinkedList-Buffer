@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>
 using namespace std;
 
 typedef struct Node
@@ -10,7 +11,7 @@ typedef struct Node
 	string lastName;
 	double avg;
 	Node* next;
-};
+} Node;
 
 Node* tmpPtr;
 Node* head;
@@ -23,7 +24,7 @@ int main()
 	string nameValue;
 	int count = 0;
 
-	if (openfile.fail()) 
+	if (openfile.fail())
 	{
 		cout << "Error opening file, Name.txt does not exist!" << endl;
 		exit(1);
@@ -60,12 +61,12 @@ int main()
 
 			}
 			count++;
-			
+
 		}
 		openfile.close(); //close the file
 	}
 
-	tmpPtr = head; 
+	tmpPtr = head;
 	while (getNext(tmpPtr) != NULL)
 	{
 		double enteravg;
@@ -89,7 +90,7 @@ int main()
 	return 0;
 }
 
-Node* getNext(Node* ptr) 
+Node* getNext(Node* ptr)
 {
 	return ptr->next;
 }
