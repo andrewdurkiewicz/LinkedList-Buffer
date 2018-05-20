@@ -1,5 +1,0 @@
-Person One 4.4
-Person Two 2.2
-Person Three 4.5
-Person Four 2.3
-Person Five 5.5
